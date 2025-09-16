@@ -1,18 +1,3 @@
-## Getting Started
+## Task Tracker
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Simple task tracker CLI tool I've written to get more familiar with Java development and a Linux development enviroment. This was made as a challenge to not use any external libraries, which is why the Task List is a Java Serializable object instead of something human readable like JSON or YAML. I'm not super happy with the end result but I at least practiced some Java, which was the point.
