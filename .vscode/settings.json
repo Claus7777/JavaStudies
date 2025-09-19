@@ -1,3 +1,10 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.project.sourcePaths": [
+        "tasktracker_cli/src",
+        "tasktracker/src",
+        "tasktracker-cli/src",
+        "store_test/src/main/java/com/javastudies/store_test"
+    ]
 }

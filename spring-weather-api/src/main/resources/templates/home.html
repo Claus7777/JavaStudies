@@ -6,8 +6,14 @@
         <h1>Welcome, <span style="color:goldenrod" th:text="${userName}">Guest</span>!</h1>
         <p>How is <span style="color:goldenrod" th:text="${address}">Dragalia</span> in this <span style="color:goldenrod" th:text="${conditions}">Sunny</span> <span th:text="${datetime}">Monday</span>?</p>
 
-        <p>Today  is a <span style="color:goldenrod" th:text="${description}">Clear sky</span>. It's now <span style="color:goldenrod" th:text="${temperature}">75.0</span> °C</p>
+        <p>Today  is a <span style="color:goldenrod" th:text="${description}">Clear sky</span> kind of day. It's now <span style="color:goldenrod" th:text="${temperature}">75.0</span> <span th:text="${fahrenheitFlag} ? '°F' : '°C'">C</span></p>
 
-        <p>Today's max Temperature: <span style="color:goldenrod" th:text="${temperature_max}">80.0</span> °C, with a minimum of <span style="color:goldenrod" th:text="${temperature_min}">70.0</span> °C</p>
+        <p>Today's max temperature is <span style="color:goldenrod" th:text="${temperature_max}">80.0</span> <span th:text="${fahrenheitFlag} ? '°F' : '°C'">C</span>, with a minimum of <span style="color:goldenrod" th:text="${temperature_min}">70.0</span> <span th:text="${fahrenheitFlag} ? 'F' : 'C'">C</span></p>
+    <form th:action="@{/}" method="post">
+        <button type="submit">
+            <span th:if="${fahrenheitFlag}">Change to Celsius</span>
+            <span th:unless="${fahrenheitFlag}">Change to Fahrenheit</span>
+        </button>
+    </form>
     </body>
 </html>

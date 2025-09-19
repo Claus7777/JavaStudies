@@ -1,5 +1,5 @@
 package javastudies.spring_weather_api;
 
 public interface WeatherService {
-    WeatherData getCurrentWeather();
+    WeatherData getCurrentWeather(boolean fahnreitFlag);
 }

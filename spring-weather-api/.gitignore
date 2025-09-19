@@ -31,5 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
-
-/home/lucaso/Documents/java/java-studies/spring-weather-api/src/main/resources/application.properties
+src/main/resources/application.properties
