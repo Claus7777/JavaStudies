@@ -1,11 +1,24 @@
 package javastudies.spring_weather_api;
 
-public class WeatherData {
+import java.io.Serializable;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+
+@RedisHash("weatherData")
+public class WeatherData implements Serializable{
+
+    @Id
     private String address;
+
     private String description;
-    private double temperature;
-    private double temperature_max;
-    private double temperature_min;
+    private double temperatureC;      // Celsius
+    private double temperatureF;      // Fahrenheit
+    private double temperatureMaxC;
+    private double temperatureMaxF;
+    private double temperatureMinC;
+    private double temperatureMinF;
+
     private String datetime;
     private String conditions;
 
@@ -15,14 +28,32 @@ public class WeatherData {
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
 
-    public double getTemperature() {return temperature;}
-    public void setTemperature(double temperature) {this.temperature = temperature;}
+    public void setTemperature(double temperature) {
+        this.temperatureF = temperature;
+        this.temperatureC = (temperature - 32) * 5.0/9.0;
+    }
 
-    public double getTemperature_max() {return temperature_max;}
-    public void setTemperature_max(double temperature_max) {this.temperature_max = temperature_max;}
+    public void setTemperatureMax(double temperatureMax) {
+        this.temperatureMaxF = temperatureMax;
+        this.temperatureMaxC = (temperatureMax - 32) * 5.0/9.0;
+    }
 
-    public double getTemperature_min() {return temperature_min;}
-    public void setTemperature_min(double temperature_min) {this.temperature_min = temperature_min;}
+    public void setTemperatureMin(double temperatureMin) {
+        this.temperatureMinF = temperatureMin;
+        this.temperatureMinC = (temperatureMin - 32) * 5.0/9.0;
+    }
+
+    public double getTemperature(boolean fahrenheit) {
+        return fahrenheit ? temperatureF : temperatureC;
+    }
+
+    public double getTemperatureMax(boolean fahrenheit) {
+        return fahrenheit ? temperatureMaxF : temperatureMaxC;
+    }
+
+    public double getTemperatureMin(boolean fahrenheit) {
+        return fahrenheit ? temperatureMinF : temperatureMinC;
+    }
 
     public String getDatetime() {return datetime;}
     public void setDatetime(String datetime) {this.datetime = datetime;}

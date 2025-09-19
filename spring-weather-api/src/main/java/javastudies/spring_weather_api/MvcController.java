@@ -30,9 +30,9 @@ public class MvcController{
         model.addAttribute("conditions", weatherData.getConditions());
         model.addAttribute("datetime", (LocalDate.parse(weatherData.getDatetime()).getDayOfWeek()).toString().toLowerCase());
         model.addAttribute("description", weatherData.getDescription()); 
-        model.addAttribute("temperature", String.format("%.01f", weatherData.getTemperature()));
-        model.addAttribute("temperature_max", String.format("%.01f", weatherData.getTemperature_max()));
-        model.addAttribute("temperature_min", String.format("%.01f", weatherData.getTemperature_min()));
+        model.addAttribute("temperature", String.format("%.01f", weatherData.getTemperature(fahrenheitFlag)));
+        model.addAttribute("temperature_max", String.format("%.01f", weatherData.getTemperatureMax(fahrenheitFlag)));
+        model.addAttribute("temperature_min", String.format("%.01f", weatherData.getTemperatureMin(fahrenheitFlag)));
 
         return "home";
     }
@@ -51,9 +51,9 @@ public class MvcController{
         model.addAttribute("conditions", weatherData.getConditions());
         model.addAttribute("datetime", (LocalDate.parse(weatherData.getDatetime()).getDayOfWeek()).toString().toLowerCase());
         model.addAttribute("description", weatherData.getDescription()); 
-        model.addAttribute("temperature", String.format("%.01f", weatherData.getTemperature()));
-        model.addAttribute("temperature_max", String.format("%.01f", weatherData.getTemperature_max()));
-        model.addAttribute("temperature_min", String.format("%.01f", weatherData.getTemperature_min()));
+        model.addAttribute("temperature", String.format("%.01f", weatherData.getTemperature(fahrenheitFlag)));
+        model.addAttribute("temperature_max", String.format("%.01f", weatherData.getTemperatureMax(fahrenheitFlag)));
+        model.addAttribute("temperature_min", String.format("%.01f", weatherData.getTemperatureMin(fahrenheitFlag)));
 
         return "home";
     }

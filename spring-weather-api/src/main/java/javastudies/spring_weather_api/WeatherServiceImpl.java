@@ -20,7 +20,7 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    @Cacheable("weatherData")
+    @Cacheable(value = "weatherData")
     public WeatherData getCurrentWeather(boolean fahnreitFlag) {
         Map<String, Object> weatherMap = weatherApiFetcher.fetchDatafromApi(apiUrl);
         ArrayList daysList = (ArrayList) weatherMap.get("days");
@@ -34,26 +34,16 @@ public class WeatherServiceImpl implements WeatherService {
         descriptionWithNoPeriod = descriptionWithNoPeriod.toLowerCase();
         weatherData.setDescription(descriptionWithNoPeriod);
 
-        if(!fahnreitFlag){
-            double temperatureInCelsius = fahrenheitToCelsius((double) todayMap.get("temp"));
-            double maxTemperatureInCelsius = fahrenheitToCelsius((double) todayMap.get("tempmax"));
-            double minTemperatureInCelsius =  fahrenheitToCelsius((double) todayMap.get("tempmin"));
-                    
-            weatherData.setTemperature(temperatureInCelsius);
-            weatherData.setTemperature_max(maxTemperatureInCelsius);
-            weatherData.setTemperature_min(minTemperatureInCelsius);
-        }
-        else { 
-            weatherData.setTemperature((double) todayMap.get("temp"));
-            weatherData.setTemperature_max((double) todayMap.get("tempmax"));
-            weatherData.setTemperature_min((double) todayMap.get("tempmin"));
-        }
+        double temp = (double) todayMap.get("temp");
+        double maxTemp = (double) todayMap.get("tempmax");
+        double minTemp = (double) todayMap.get("tempmin");
+
+        weatherData.setTemperature(temp);
+        weatherData.setTemperatureMax(maxTemp);
+        weatherData.setTemperatureMin(minTemp);
+
+        System.out.println(temp);
 
         return weatherData;
-    }
-
-
-    private double fahrenheitToCelsius(double tempInFahrenheit) {
-        return (tempInFahrenheit - 32) * 5.0/9.0;
     }
 }
