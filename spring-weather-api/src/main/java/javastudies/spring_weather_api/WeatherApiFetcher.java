@@ -16,6 +16,7 @@ public class WeatherApiFetcher {
 
     public Map<String, Object> fetchDatafromApi(String url){
         Map<String, Object> result = restTemplate.getForObject(url, Map.class);
+        System.out.println(result);
         return result;
     }
 }
