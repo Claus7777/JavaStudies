@@ -28,7 +28,7 @@ public class MvcController{
            populateWeatherModel(model, weatherData);
            return "home";
         } catch (Exception e) {
-            model.addAttribute("errorMessage", "Failed to fetch weather data: " + e.getMessage());
+            model.addAttribute("errorMessage", e.getMessage());
             return "error";
         }
     }
@@ -42,7 +42,7 @@ public class MvcController{
            populateWeatherModel(model, weatherData);
            return "home";
         } catch (Exception e) {
-            model.addAttribute("errorMessage", "Failed to fetch weather data: " + e.getMessage());
+            model.addAttribute("errorMessage", e.getMessage());
             return "error";
         }
     }
