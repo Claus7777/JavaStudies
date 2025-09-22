@@ -20,7 +20,7 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    @Cacheable(value = "weatherData")
+    @Cacheable("weatherData")
     public WeatherData getCurrentWeather(boolean fahnreitFlag) {
         Map<String, Object> weatherMap = weatherApiFetcher.fetchDatafromApi(apiUrl);
         ArrayList daysList = (ArrayList) weatherMap.get("days");
@@ -38,9 +38,9 @@ public class WeatherServiceImpl implements WeatherService {
         double maxTemp = (double) todayMap.get("tempmax");
         double minTemp = (double) todayMap.get("tempmin");
 
-        weatherData.setTemperature(temp);
-        weatherData.setTemperatureMax(maxTemp);
-        weatherData.setTemperatureMin(minTemp);
+        weatherData.setTemperature(temp, fahnreitFlag);
+        weatherData.setTemperatureMax(maxTemp, fahnreitFlag);
+        weatherData.setTemperatureMin(minTemp, fahnreitFlag);
 
         System.out.println(temp);
 

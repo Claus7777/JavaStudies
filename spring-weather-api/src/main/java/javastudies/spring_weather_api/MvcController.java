@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -30,10 +29,18 @@ public class MvcController{
         model.addAttribute("conditions", weatherData.getConditions());
         model.addAttribute("datetime", (LocalDate.parse(weatherData.getDatetime()).getDayOfWeek()).toString().toLowerCase());
         model.addAttribute("description", weatherData.getDescription()); 
-        model.addAttribute("temperature", String.format("%.01f", weatherData.getTemperature(fahrenheitFlag)));
-        model.addAttribute("temperature_max", String.format("%.01f", weatherData.getTemperatureMax(fahrenheitFlag)));
-        model.addAttribute("temperature_min", String.format("%.01f", weatherData.getTemperatureMin(fahrenheitFlag)));
 
+        if(fahrenheitFlag){
+            model.addAttribute("temperature", Math.round(weatherData.getTemperature()));
+            model.addAttribute("temperature_max",  Math.round(weatherData.getTemperatureMax()));
+            model.addAttribute("temperature_min",  Math.round(weatherData.getTemperatureMin()));
+        }
+
+        else {      
+            model.addAttribute("temperature", String.format("%.01f", weatherData.getTemperature()));
+            model.addAttribute("temperature_max", String.format("%.01f", weatherData.getTemperatureMax()));
+            model.addAttribute("temperature_min", String.format("%.01f", weatherData.getTemperatureMin()));
+        }
         return "home";
     }
 
@@ -51,9 +58,18 @@ public class MvcController{
         model.addAttribute("conditions", weatherData.getConditions());
         model.addAttribute("datetime", (LocalDate.parse(weatherData.getDatetime()).getDayOfWeek()).toString().toLowerCase());
         model.addAttribute("description", weatherData.getDescription()); 
-        model.addAttribute("temperature", String.format("%.01f", weatherData.getTemperature(fahrenheitFlag)));
-        model.addAttribute("temperature_max", String.format("%.01f", weatherData.getTemperatureMax(fahrenheitFlag)));
-        model.addAttribute("temperature_min", String.format("%.01f", weatherData.getTemperatureMin(fahrenheitFlag)));
+
+        if(fahrenheitFlag){
+            model.addAttribute("temperature", Math.round(weatherData.getTemperature()));
+            model.addAttribute("temperature_max",  Math.round(weatherData.getTemperatureMax()));
+            model.addAttribute("temperature_min",  Math.round(weatherData.getTemperatureMin()));
+        }
+
+        else {      
+            model.addAttribute("temperature", String.format("%.01f", weatherData.getTemperature()));
+            model.addAttribute("temperature_max", String.format("%.01f", weatherData.getTemperatureMax()));
+            model.addAttribute("temperature_min", String.format("%.01f", weatherData.getTemperatureMin()));
+        }
 
         return "home";
     }

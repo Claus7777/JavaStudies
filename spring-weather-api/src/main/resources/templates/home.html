@@ -8,7 +8,7 @@
 
         <p>Today  is a <span style="color:goldenrod" th:text="${description}">Clear sky</span> kind of day. It's now <span style="color:goldenrod" th:text="${temperature}">75.0</span> <span th:text="${fahrenheitFlag} ? '°F' : '°C'">C</span></p>
 
-        <p>Today's max temperature is <span style="color:goldenrod" th:text="${temperature_max}">80.0</span> <span th:text="${fahrenheitFlag} ? '°F' : '°C'">C</span>, with a minimum of <span style="color:goldenrod" th:text="${temperature_min}">70.0</span> <span th:text="${fahrenheitFlag} ? 'F' : 'C'">C</span></p>
+        <p>Today's max temperature is <span style="color:goldenrod" th:text="${temperature_max}">80.0</span> <span th:text="${fahrenheitFlag} ? '°F' : '°C'">C</span>, with a minimum of <span style="color:goldenrod" th:text="${temperature_min}">70.0</span> <span th:text="${fahrenheitFlag} ? '°F' : '°C'">C</span></p>
     <form th:action="@{/}" method="post">
         <button type="submit">
             <span th:if="${fahrenheitFlag}">Change to Celsius</span>
